@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="">
+  <head>
+      <meta charset="utf-8" />
+	  <script src="laser.js" type="text/javascript"></script>
+      <title>Laser</title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+
+	<h1>Laser</h1>
+<span>
+	<button type="button" id="initbutton" onclick="connect()" >Connect</button><br>
+	<label>Device:</label> <label id="device"></label><br>
+	<label>Measure:</label><label id="measure"></label><br>
+</span>
+
+	  <script type="text/javascript">
+		var laser = new Laser();
+		laser.onConnect = function(name)
+		{
+			document.getElementById("device").innerText =name;
+		}
+		laser.onMeasure = function(value)
+		{
+			var elem = document.getElementById("measure");
+			elem.innerText = value.toFixed(3);
+		}
+		function connect()
+		{
+
+			laser.init();
+		}
+	  </script>
+  </body>
+</html>
